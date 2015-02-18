@@ -306,7 +306,7 @@ class TransferChargeFee(models.Model):
 
 class Customer(StripeObject):
 
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         getattr(settings, "AUTH_USER_MODEL", "auth.User"),
         null=True
     )
