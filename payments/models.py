@@ -373,7 +373,7 @@ class Customer(StripeObject):
         cancelled.send(sender=self, stripe_response=sub)
 
     @classmethod
-    def create(cls, user, card=None, plan=None, charge_immediately=True, trail_end=None):
+    def create(cls, user, card=None, plan=None, charge_immediately=True, trial_end=None):
 
         if card and plan:
             plan = PAYMENTS_PLANS[plan]["stripe_plan_id"]
@@ -385,7 +385,7 @@ class Customer(StripeObject):
         # trial_end = None
         if TRIAL_PERIOD_FOR_USER_CALLBACK and plan:
             trial_days = TRIAL_PERIOD_FOR_USER_CALLBACK(user)
-            if not trail_end:
+            if not trial_end:
                 trial_end = datetime.datetime.utcnow() + datetime.timedelta(
                     days=trial_days
                 )
