@@ -378,6 +378,7 @@ class Customer(StripeObject):
             PAYMENTS_PLANS = plans
             
         if card and plan:
+            raise Exception(PAYMENTS_PLANS)
             plan = PAYMENTS_PLANS[plan]["stripe_plan_id"]
         elif DEFAULT_PLAN:
             plan = PAYMENTS_PLANS[DEFAULT_PLAN]["stripe_plan_id"]
