@@ -373,7 +373,7 @@ class Customer(StripeObject):
         cancelled.send(sender=self, stripe_response=sub)
 
     @classmethod
-    def create(cls, user, card=None, plan=None, charge_immediately=True, trial_end=None, plans=None):
+    def create(cls, user, card=None, plan=None, charge_immediately=True, trial_end=None, plans=None, coupon=None):
         if plans:
             PAYMENTS_PLANS = plans
             
@@ -396,7 +396,8 @@ class Customer(StripeObject):
             email=user.email,
             card=card,
             plan=plan or DEFAULT_PLAN,
-            trial_end=trial_end
+            trial_end=trial_end,
+            coupon=coupon
         )
 
         if stripe_customer.active_card:
