@@ -385,12 +385,12 @@ class Customer(StripeObject):
             plan = None
 
         # trial_end = None
-        if TRIAL_PERIOD_FOR_USER_CALLBACK and plan:
-            trial_days = TRIAL_PERIOD_FOR_USER_CALLBACK(user)
-            if not trial_end:
-                trial_end = datetime.datetime.utcnow() + datetime.timedelta(
-                    days=trial_days
-                )
+        #if TRIAL_PERIOD_FOR_USER_CALLBACK and plan:
+        #    trial_days = TRIAL_PERIOD_FOR_USER_CALLBACK(user)
+        #    if not trial_end:
+        #        trial_end = datetime.datetime.utcnow() + datetime.timedelta(
+        #            days=trial_days
+        #        )
 
         stripe_customer = stripe.Customer.create(
             email=user.email,
