@@ -614,7 +614,7 @@ class CurrentSubscription(models.Model):
         related_name="current_subscription",
         null=True
     )
-    plan = models.CharField(max_length=100)
+    plan = models.CharField(max_length=100, null=True, blank=True)
     quantity = models.IntegerField()
     start = models.DateTimeField()
     # trialing, active, past_due, canceled, or unpaid
@@ -803,7 +803,7 @@ class InvoiceItem(models.Model):
     proration = models.BooleanField(default=False)
     line_type = models.CharField(max_length=50)
     description = models.CharField(max_length=200, blank=True)
-    plan = models.CharField(max_length=100, blank=True)
+    plan = models.CharField(max_length=100, null=True, blank=True)
     quantity = models.IntegerField(null=True)
 
     def plan_display(self):
