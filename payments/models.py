@@ -614,7 +614,7 @@ class CurrentSubscription(models.Model):
         related_name="current_subscription",
         null=True
     )
-    plan = models.CharField(max_length=100, null=True, blank=True)
+    plan = models.CharField(default="", max_length=100, null=True, blank=True)
     quantity = models.IntegerField()
     start = models.DateTimeField()
     # trialing, active, past_due, canceled, or unpaid
