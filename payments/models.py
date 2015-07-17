@@ -803,7 +803,7 @@ class InvoiceItem(models.Model):
     proration = models.BooleanField(default=False)
     line_type = models.CharField(max_length=50)
     description = models.CharField(max_length=200, blank=True)
-    plan = models.CharField(max_length=100, null=True, blank=True)
+    plan = models.CharField(default="", max_length=100, null=True, blank=True)
     quantity = models.IntegerField(null=True)
 
     def plan_display(self):
