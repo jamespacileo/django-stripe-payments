@@ -382,7 +382,7 @@ class Customer(StripeObject):
         elif DEFAULT_PLAN:
             plan = PAYMENTS_PLANS[DEFAULT_PLAN]["stripe_plan_id"]
         else:
-            plan = None
+            plan = "None"
 
         # trial_end = None
         #if TRIAL_PERIOD_FOR_USER_CALLBACK and plan:
@@ -614,7 +614,7 @@ class CurrentSubscription(models.Model):
         related_name="current_subscription",
         null=True
     )
-    plan = models.CharField(default="", max_length=100, null=True, blank=True)
+    plan = models.CharField(default="None", max_length=100, null=True, blank=True)
     quantity = models.IntegerField()
     start = models.DateTimeField()
     # trialing, active, past_due, canceled, or unpaid
@@ -746,7 +746,7 @@ class Invoice(models.Model):
             if item.get("plan"):
                 plan = plan_from_stripe_id(item["plan"]["id"])
             else:
-                plan = ""
+                plan = "None"
 
             inv_item, inv_item_created = invoice.items.get_or_create(
                 stripe_id=item["id"],
